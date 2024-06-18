@@ -7,6 +7,7 @@ import Home from "./Home/Home.jsx";
 import Dashboard from "./dashboard/Dashboard.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import SignInPage from "./auth/SignIn.jsx";
+import EditResume from "./dashboard/resume/[resumeId]/EditResume.jsx";
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/resume/:resumeId/edit",
+        element: <EditResume />,
       },
     ],
   },
@@ -31,9 +36,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <RouterProvider router={router} />
-    </ClerkProvider>
-  </React.StrictMode>
+  <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <RouterProvider router={router} />
+  </ClerkProvider>
 );

@@ -8,7 +8,7 @@ function Header() {
   return (
     <div className="p-3 px-5 flex justify-between shadow-md">
       <img
-        src="/public/logo.svg"
+        src="/logo.svg"
         alt="Logo of nextgen cv builder"
         width={150}
         height={150}
@@ -18,6 +18,7 @@ function Header() {
           <Link to="/dashboard">
             <Button variant="outline"> Dashboard </Button>
           </Link>
+          <p className="text-gray-500">Welcome {user?.fullName}</p>
           <UserButton />
         </div>
       ) : (

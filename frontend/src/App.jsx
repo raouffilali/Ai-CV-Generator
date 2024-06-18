@@ -1,7 +1,8 @@
 import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
-import { Progress } from "@/components/ui/progress";
 import Header from "./components/custom/Header";
+import { Loader2 } from "lucide-react";
+
 
 function App() {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -9,7 +10,7 @@ function App() {
   if (!isLoaded) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Progress value={100} className="w-10 h-10" />
+        <Loader2 size={70} className="animate-spin" />
       </div>
     );
   }
