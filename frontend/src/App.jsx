@@ -7,7 +7,11 @@ function App() {
   const { user, isLoaded, isSignedIn } = useUser();
 
   if (!isLoaded) {
-    return <Progress value={33} />;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Progress value={100} className="w-10 h-10" />
+      </div>
+    );
   }
 
   if (!isSignedIn && isLoaded) {
