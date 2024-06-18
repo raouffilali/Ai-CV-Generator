@@ -8,7 +8,6 @@ import Dashboard from "./dashboard/Dashboard.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import SignInPage from "./auth/SignIn.jsx";
 
-
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const router = createBrowserRouter([
@@ -16,14 +15,14 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-      },
-      {
         path: "/dashboard",
         element: <Dashboard />,
       },
     ],
+  },
+  {
+    path: "/",
+    element: <Home />,
   },
   {
     path: "/auth/sign-in",
