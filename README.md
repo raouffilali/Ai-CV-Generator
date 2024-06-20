@@ -27,3 +27,57 @@ To set up and run Nextgen CV Builder locally, follow these steps:
    ```bash
    git clone https://github.com/your-repo/nextgen-cv-builder.git
    cd nextgen-cv-builder
+   
+2. **Install Dependencies**
+   ```bash
+   npm install
+   
+3. **Set Up Environment Variables**
+   Create a .env file in the root directory and add your environment variables. Example:
+   ```bash
+   REACT_APP_CLERK_FRONTEND_API=<your-clerk-frontend-api>
+   STRAPI_URL=<your-strapi-url>
+   
+4. **Run the Development Server**
+   ```bash
+   npm run dev
+
+5. **Build for Production**
+   ```bash
+   npm run build
+   
+6. **Start the Production Server Strapi**
+   ```bash
+   npm run develop
+
+## Usage
+1. Sign Up / Log In: Create an account or log in using Clerk's secure authentication.
+2. Create a Resume: Use the AI-powered tools to generate content or start from a template.
+3. Customize: Edit and customize your resume to fit your personal style and professional needs.
+4. Save and Export: Save your resume to the cloud and export it in your desired format.
+
+## Contributing
+
+We welcome contributions to enhance Nextgen CV Builder. To contribute:
+
+1. **Fork the repository.**
+2. **Create a new branch:**
+   ```bash
+   git checkout -b feature/your-feature
+3. **Commit your changes:**
+   ```bash
+   git commit -m 'Add some feature'
+4. **Push to the branch:**
+   ```bash
+   git push origin feature/your-feature  
+5. **Open a pull request.**
+
+  
+## License
+
+Nextgen CV Builder is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Contact
+
+For any inquiries or support, please contact us at [contact@abderraouf-filali.tech](mailto:contact@abderraouf-filali.tech).
+
