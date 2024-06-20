@@ -52,10 +52,10 @@ To set up and run Nextgen CV Builder locally, follow these steps:
    npm run develop
 
 ## Usage
-1. Sign Up / Log In: Create an account or log in using Clerk's secure authentication.
-2. Create a Resume: Use the AI-powered tools to generate content or start from a template.
-3. Customize: Edit and customize your resume to fit your personal style and professional needs.
-4. Save and Export: Save your resume to the cloud and export it in your desired format.
+1. **Sign Up / Log In:** Create an account or log in using Clerk's secure authentication.
+2. **Create a Resume:** Use the AI-powered tools to generate content or start from a template.
+3. **Customize:** Edit and customize your resume to fit your personal style and professional needs.
+4. **Save and Export:** Save your resume to the cloud and export it in your desired format.
 
 ## Contributing
 
