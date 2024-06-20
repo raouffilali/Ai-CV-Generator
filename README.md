@@ -33,20 +33,21 @@ To set up and run Nextgen CV Builder locally, follow these steps:
    npm install
    
 3. **Set Up Environment Variables**
+   
    Create a .env file in the root directory and add your environment variables. Example:
    ```bash
    REACT_APP_CLERK_FRONTEND_API=<your-clerk-frontend-api>
    STRAPI_URL=<your-strapi-url>
    
-4. **Run the Development Server**
+5. **Run the Development Server**
    ```bash
    npm run dev
 
-5. **Build for Production**
+6. **Build for Production**
    ```bash
    npm run build
    
-6. **Start the Production Server Strapi**
+7. **Start the Production Server Strapi**
    ```bash
    npm run develop
 
