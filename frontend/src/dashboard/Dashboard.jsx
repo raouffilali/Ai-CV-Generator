@@ -17,7 +17,10 @@ function Dashboard() {
         console.log(res.data);
         setResumeList(res.data.data);
       }
-    );
+    ).catch((err) => {
+      console.log(err);
+      throw new Error(err);
+    });
   };
 
   useEffect(() => {

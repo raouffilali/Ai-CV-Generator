@@ -3,14 +3,13 @@ import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/custom/Header";
 import { Loader2 } from "lucide-react";
 
-
 function App() {
   const { user, isLoaded, isSignedIn } = useUser();
 
   if (!isLoaded) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Loader2 size={70} className="animate-spin" />
+        <Loader2 size={70} color="#9f5bff" className="animate-spin" />
       </div>
     );
   }

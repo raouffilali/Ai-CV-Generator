@@ -12,7 +12,7 @@ function PersonalDetailPreview({ resumeInfo }) {
         {resumeInfo?.firstName} {resumeInfo?.lastName.toUpperCase()}
       </h2>
       <h2 className="text-center text-sm font-medium lg:text-lg md:text-sm">
-        {resumeInfo?.jobTitle.toUpperCase()}
+        {resumeInfo?.jobTitle}
       </h2>
       <h2
         className="text-center font-normal text-xs lg:text-lg md:text-sm"
