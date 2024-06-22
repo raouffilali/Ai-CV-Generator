@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
+import Summery from "./forms/Summery";
 
 function FormSection() {
 
@@ -30,16 +31,18 @@ function FormSection() {
             className="flex gap-2"
             size="sm"
             onClick={() => setActiveFormIndex(activeFormIndex + 1)}
-            disabled = {!enableNext}
+            disabled={!enableNext}
           >
             Next <ArrowRight />{" "}
           </Button>
         </div>
       </div>
-      {/* Personal details Phone */}
-      {activeFormIndex == 1 ? <PersonalDetail enableNext= {(v)=> setEnableNext(v)} /> : null}
-
-      {/* summary */}
+      {/* Personal details the   summary */}
+      {activeFormIndex == 1 ? (
+        <PersonalDetail enableNext={(v) => setEnableNext(v)} />
+      ) : activeFormIndex == 2 ? (
+        <Summery enableNext={(v) => setEnableNext(v)} />
+      ) : null}
 
       {/* Experience */}
 
