@@ -33,20 +33,20 @@ function AddResume() {
         userName: user?.fullName,
       },
     };
-
-    GlobaleApi.CreateNewResume(data).then(
-      (resp) => {
-        console.log("Resume created", resp.data.data.documentId);
-        if (resp) {
+    console.log("data", data),
+      GlobaleApi.CreateNewResume(data).then(
+        (resp) => {
+          console.log("Resume created", resp.data.data.documentId);
+          if (resp) {
+            setLoading(false);
+            navigation(`/dashboard/resume/${resp.data.data.documentId}/edit`);
+          }
+        },
+        (error) => {
+          console.log("Error while creating resume", error);
           setLoading(false);
-          navigation(`/dashboard/resume/${resp.data.data.documentId}/edit`);
         }
-      },
-      (error) => {
-        console.log("Error while creating resume", error);
-        setLoading(false);
-      }
-    );
+      );
   };
 
   return (

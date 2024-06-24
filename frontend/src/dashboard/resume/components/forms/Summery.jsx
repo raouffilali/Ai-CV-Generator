@@ -175,10 +175,12 @@ function Summery({ enableNext }) {
       </div>
 
       {aiGeneratedSummeryList.length > 0 && (
-        <div className="my-5">
-          <h2 className="font-bold text-lg">Suggestions</h2>
+        <div className="my-7">
+          <h2 className="font-bold text-lg mb-7">
+            Suggestions for: <span className="italic text-primary">{resumeInfo?.jobTitle} </span>
+          </h2>
           {aiGeneratedSummeryList.map((item, index) => (
-            <div className="relative inline-flex  group">
+            <div key={index} className="relative inline-flex  group">
               <div className="absolute transitiona-all duration-1000 opacity-20 -inset-px bg-gradient-to-r from-[#9f5bff] to-blue-500 rounded-sm blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
               <div
                 key={index}
