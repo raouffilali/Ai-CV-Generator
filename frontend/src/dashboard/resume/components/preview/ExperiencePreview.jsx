@@ -30,15 +30,16 @@ function ExperiencePreview({ resumeInfo }) {
           <h1 className="text-sm flex justify-between font-semibold text-gray-500 ">
             {exp?.companyName}, {exp?.city}, {exp?.state}
             <span className="text-sm italic ">
-              {exp?.startDate} -{" "}
+              {exp?.startDate} To {" "}
               {exp?.currentlyWorking ? "Present" : exp?.endDate}
             </span>
           </h1>
-          {exp?.workSummery.split("• ").map((line, index) => (
+          {/* {exp?.workSummery.split("• ").map((line, index) => (
             <p key={index} className="text-sm">
               • {line}
             </p>
-          ))}
+          ))} */}
+          <div dangerouslySetInnerHTML={{ __html: exp?.workSummery }} />
         </div>
       ))}
     </div>
