@@ -121,6 +121,7 @@ function Experience() {
                 </div>
                 <div className="col-span-2">
                   <ReachTextEditor
+                  index={index}
                     onRichTextEditorChange={(event) =>
                       handleRichTextEDitor(event, "workSummery", index)
                     }
