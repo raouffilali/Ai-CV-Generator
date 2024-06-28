@@ -12,7 +12,7 @@ export interface ApiUserResumeUserResume extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    resumeTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     resumeId: Schema.Attribute.String;
     userEmail: Schema.Attribute.Email;
     userName: Schema.Attribute.String;
@@ -25,6 +25,7 @@ export interface ApiUserResumeUserResume extends Struct.CollectionTypeSchema {
     summery: Schema.Attribute.Text;
     experience: Schema.Attribute.Component<'experience.experience', true>;
     education: Schema.Attribute.Component<'education.education', true>;
+    skills: Schema.Attribute.Component<'skills.skills', true>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

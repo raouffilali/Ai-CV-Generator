@@ -20,33 +20,33 @@ function AddResume() {
   const [resumeTitle, setResumeTitle] = useState();
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const onCreate = () => {
     setLoading(true);
     const uuid = uuidv4();
     const data = {
       data: {
-        resumeTitle: resumeTitle,
+        title: resumeTitle,
         resumeId: uuid,
         userEmail: user?.primaryEmailAddress?.emailAddress,
         userName: user?.fullName,
       },
     };
-    console.log("data", data),
-      GlobaleApi.CreateNewResume(data).then(
-        (resp) => {
-          console.log("Resume created", resp.data.data.documentId);
-          if (resp) {
-            setLoading(false);
-            navigation(`/dashboard/resume/${resp.data.data.documentId}/edit`);
-          }
-        },
-        (error) => {
-          console.log("Error while creating resume", error);
+    console.log("data", data);
+    GlobaleApi.CreateNewResume(data).then(
+      (resp) => {
+        console.log("Resume created", resp.data.data.documentId);
+        if (resp) {
           setLoading(false);
+          navigate(`/dashboard/resume/${resp.data.data.documentId}/edit`);
         }
-      );
+      },
+      (error) => {
+        console.log("Error while creating resume", error);
+        setLoading(false);
+      }
+    );
   };
 
   return (
@@ -67,7 +67,7 @@ function AddResume() {
           <DialogHeader>
             <DialogTitle className="mb-2">Create New CV</DialogTitle>
             <DialogDescription>
-              <p>Add a title for your new CV</p>
+              <div>Add a title for your new CV</div>
               <Input
                 className="my-2"
                 placeholder="Ex.Full Stack resume"

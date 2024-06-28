@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "resumeTitle": {
+    "title": {
       "type": "string",
       "required": true
     },
@@ -56,6 +56,11 @@
       "type": "component",
       "repeatable": true,
       "component": "education.education"
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skills.skills"
     }
   }
 }

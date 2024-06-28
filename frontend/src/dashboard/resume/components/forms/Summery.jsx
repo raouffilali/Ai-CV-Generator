@@ -177,15 +177,16 @@ function Summery({ enableNext }) {
       {aiGeneratedSummeryList.length > 0 && (
         <div className="my-7">
           <h2 className="font-bold text-lg mb-7">
-            Suggestions for: <span className="italic text-primary">{resumeInfo?.jobTitle} </span>
+            Suggestions for:{" "}
+            <span className="italic text-primary">{resumeInfo?.jobTitle} </span>
           </h2>
           {aiGeneratedSummeryList.map((item, index) => (
             <div key={index} className="relative inline-flex  group">
-              <div className="absolute transitiona-all duration-1000 opacity-20 -inset-px bg-gradient-to-r from-[#9f5bff] to-blue-500 rounded-sm blur-lg group-hover:opacity-75 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              <div className="absolute transitiona-all duration-1000 opacity-10 -inset-px bg-gradient-to-r from-[#9f5bff] to-blue-500 rounded-sm blur-lg group-hover:opacity-25 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
               <div
                 key={index}
                 onClick={() => setSummery(item?.summary)}
-                className="p-5 shadow-lg my-4  cursor-pointer relative  items-center justify-center px- py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-900"
+                className="p-5 shadow-lg my-4  cursor-pointer relative  items-center justify-center px- py-2 text-lg font-bold text-black transition-all duration-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-900"
               >
                 <h2 className="font-bold my-1 text-primary">
                   Level: {item?.experienceLevel}

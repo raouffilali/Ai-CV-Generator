@@ -24,7 +24,7 @@ function SKillPreview({ resumeInfo }) {
               <div
                 className="h-2"
                 style={{
-                  width: skill?.rating + "%",
+                  width: skill?.rating*20 + "%",
                   backgroundColor: resumeInfo?.themeColor,
                 }}
               ></div>
