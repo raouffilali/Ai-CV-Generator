@@ -22,9 +22,10 @@ export interface EducationEducation extends Struct.ComponentSchema {
   collectionName: 'components_education_educations';
   info: {
     displayName: 'Education';
+    description: '';
   };
   attributes: {
-    university: Schema.Attribute.String;
+    universityName: Schema.Attribute.String;
     degree: Schema.Attribute.String;
     major: Schema.Attribute.String;
     startDate: Schema.Attribute.String;

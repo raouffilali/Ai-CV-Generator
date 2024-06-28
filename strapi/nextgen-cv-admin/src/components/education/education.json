@@ -1,11 +1,12 @@
 {
   "collectionName": "components_education_educations",
   "info": {
-    "displayName": "Education"
+    "displayName": "Education",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "university": {
+    "universityName": {
       "type": "string"
     },
     "degree": {
