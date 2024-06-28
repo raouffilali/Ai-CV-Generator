@@ -23,10 +23,14 @@ function PersonalDetail({ enableNext }) {
       [name]: value,
     });
 
+    console.log(formData);
+
     setResumeInfo({
       ...resumeInfo,
       [name]: value,
     });
+
+    console.log(resumeInfo);
   };
 
   const onSave = (e) => {

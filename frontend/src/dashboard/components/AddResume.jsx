@@ -27,7 +27,7 @@ function AddResume() {
     const uuid = uuidv4();
     const data = {
       data: {
-        title: resumeTitle,
+        resumeTitle: resumeTitle,
         resumeId: uuid,
         userEmail: user?.primaryEmailAddress?.emailAddress,
         userName: user?.fullName,

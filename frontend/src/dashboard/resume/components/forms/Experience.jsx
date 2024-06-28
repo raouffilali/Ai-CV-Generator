@@ -3,7 +3,14 @@ import { Input } from "@/components/ui/input";
 import React, { useContext, useEffect, useState } from "react";
 import ReachTextEditor from "../ReachTextEditor";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
-import exp from "constants";
+import { useParams } from "react-router-dom";
+import GlobalApi from "../../../../../service/GlobalApi";
+// import { Slide, ToastContainer, toast } from "react-toastify";
+import { LoaderCircle } from "lucide-react";
+import "react-toastify/dist/ReactToastify.css"; // Ensure Toastify CSS is imported
+
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 const formField = {
   title: "",
@@ -16,10 +23,18 @@ const formField = {
 };
 
 function Experience() {
-  const [experienceList, setExperienceList] = useState([formField]);
+  const [experienceList, setExperienceList] = useState([]);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  const params = useParams();
+  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (event, index) => {
+  useEffect(() => {
+    if (resumeInfo?.experience?.length > 0) {
+      setExperienceList(resumeInfo.experience);
+    }
+  }, [resumeInfo]);
+
+  const handleChange = (index, event) => {
     const newEntries = experienceList.slice();
     const { name, value } = event.target;
     newEntries[index][name] = value;
@@ -27,138 +42,177 @@ function Experience() {
   };
 
   const AddNewExperience = () => {
-    setExperienceList([
-      ...experienceList,
-      {
-        title: "",
-        companyName: "",
-        city: "",
-        state: "",
-        startDate: "",
-        endDate: "",
-        workSummery: "",
-      },
-    ]);
+    setExperienceList([...experienceList, { ...formField }]);
   };
 
-  const RemoveNewExperience = () => {
-    // ??Method 1
-    // const list = [...experienceList]
-    // list.pop()
-    // setExperienceList(list)
-
-    // ??Method 2
-    setExperienceList(experienceList.slice(0, -1));
+  const RemoveExperience = () => {
+    setExperienceList((experienceList) => experienceList.slice(0, -1));
   };
 
-  const handleRichTextEDitor = (e, name, index) => {
+  const handleRichTextEditor = (e, name, index) => {
     const newEntries = experienceList.slice();
     newEntries[index][name] = e.target.value;
     setExperienceList(newEntries);
   };
 
   useEffect(() => {
-    setResumeInfo({
-      ...resumeInfo,
+    setResumeInfo((prevInfo) => ({
+      ...prevInfo,
       experience: experienceList,
-    });
-  }, [experienceList]);
+    }));
+  }, [experienceList, setResumeInfo]);
+
+  const retrySave = () => {
+    // after 1 second set loading to false
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  const onSave = () => {
+    setLoading(true);
+
+    const formattedExperienceList = experienceList.map(({ id, ...rest }) => ({
+      ...rest,
+      startDate: rest.startDate
+        ? new Date(rest.startDate).toISOString().split("T")[0]
+        : "",
+      endDate: rest.endDate
+        ? new Date(rest.endDate).toISOString().split("T")[0]
+        : "",
+    }));
+
+    const data = {
+      data: {
+        experience: formattedExperienceList,
+      },
+    };
+
+    GlobalApi.updateResumeDetail(params?.resumeId, data)
+      .then((res) => {
+        setLoading(false);
+        // toast.success("Professional details updated successfully", {
+        //   position: "bottom-left",
+        //   autoClose: 2000,
+        //   hideProgressBar: true,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   theme: "light",
+        //   transition: Slide,
+        // });
+        toast.success("Professional details updated successfully.");
+      })
+      .catch((error) => {
+        setLoading(false);
+        // toast.error("Something went wrong", {
+        //   position: "bottom-left",
+        //   autoClose: 2000,
+        //   hideProgressBar: true,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   theme: "light",
+        //   transition: Slide,
+        // });
+        toast.error("Something went wrong");
+      });
+  };
 
   return (
     <div>
-      <div className=" p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
-        {/* <ToastContainer /> */}
+      <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
+        {/* <ToastContainer />  */}
+        <Toaster position="bottom-left" richColors expand={true} />
         <h2 className="font-bold text-lg">Professional Experience</h2>
         <p>Add Your previous Job experience</p>
-
         <div>
           {experienceList.map((item, index) => (
             <div key={index}>
-              <div className=" grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
+              <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
                 <div>
-                  <label className="text-sm">Position Title</label>
+                  <label className="text-xs">Position Title</label>
                   <Input
                     name="title"
-                    onChange={(e) => handleInputChange(e, index)}
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.title}
                   />
                 </div>
                 <div>
-                  <label className="text-sm">Company Name</label>
+                  <label className="text-xs">Company Name</label>
                   <Input
                     name="companyName"
-                    onChange={(e) => handleInputChange(e, index)}
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.companyName}
                   />
                 </div>
                 <div>
-                  <label className="text-sm">City</label>
+                  <label className="text-xs">City</label>
                   <Input
                     name="city"
-                    onChange={(e) => handleInputChange(e, index)}
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.city}
                   />
                 </div>
                 <div>
-                  <label className="text-sm">State</label>
+                  <label className="text-xs">State</label>
                   <Input
                     name="state"
-                    onChange={(e) => handleInputChange(e, index)}
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.state}
                   />
                 </div>
                 <div>
-                  <label className="text-sm">Start Date</label>
+                  <label className="text-xs">Start Date</label>
                   <Input
+                    type="date"
                     name="startDate"
-                    onChange={(e) => handleInputChange(e, index)}
-                    type="date"
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.startDate}
                   />
                 </div>
                 <div>
-                  <label className="text-sm">End Date</label>
+                  <label className="text-xs">End Date</label>
                   <Input
-                    name="endDate"
-                    onChange={(e) => handleInputChange(e, index)}
                     type="date"
+                    name="endDate"
+                    onChange={(event) => handleChange(index, event)}
+                    defaultValue={item?.endDate}
                   />
                 </div>
                 <div className="col-span-2">
                   <ReachTextEditor
-                  index={index}
+                    index={index}
+                    defaultValue={item?.workSummery}
                     onRichTextEditorChange={(event) =>
-                      handleRichTextEDitor(event, "workSummery", index)
+                      handleRichTextEditor(event, "workSummery", index)
                     }
                   />
                 </div>
-                {/* <div className="col-span-2">
-                  <label className="text-sm">Work Summery</label>
-                  <Input
-                    name="workSummery"
-                    onChange={(e) => handleInputChange(e, index)}
-                  />
-                </div> */}
               </div>
             </div>
           ))}
         </div>
-
         <div className="flex justify-between">
           <div className="flex gap-2">
             <Button
               variant="outline"
-              className="text-primary"
               onClick={AddNewExperience}
+              className="text-primary"
             >
               + Add More Experience
             </Button>
-            {experienceList.length > 1 && (
-              <Button
-                variant="outline"
-                className="text-primary"
-                onClick={RemoveNewExperience}
-              >
-                - Remove
-              </Button>
-            )}
+            <Button
+              variant="outline"
+              onClick={RemoveExperience}
+              className="text-primary"
+            >
+              - Remove
+            </Button>
           </div>
-          <Button type="submit">Save</Button>
+          <Button disabled={loading} onClick={onSave}>
+            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
+          </Button>
         </div>
       </div>
     </div>

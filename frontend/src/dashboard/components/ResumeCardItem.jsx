@@ -13,7 +13,7 @@ function ResumeCardItem({ resume }) {
       >
         <Notebook size={100} />
       </div>
-      <h2 className="text-center my-1">{resume.title}</h2>
+      <h2 className="text-center my-1">{resume.resumeTitle}</h2>
     </Link>
   );
 }
