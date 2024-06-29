@@ -6,10 +6,12 @@ import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skills";
+import { Navigate, useParams } from "react-router-dom";
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(false);
+  const {resumeId} = useParams()
 
   return (
     <div>
@@ -59,6 +61,8 @@ function FormSection() {
         />
       ) : activeFormIndex == 5 ? (
         <Skills style={"sticky top-0"} />
+      ) : activeFormIndex == 6 ? (
+        <Navigate to={`/my-resume/${resumeId}/view`} />
       ) : null}
 
       {/* Experience */}
