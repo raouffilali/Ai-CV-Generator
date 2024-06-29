@@ -73,7 +73,7 @@ function Skills() {
     });
   }, [skillsList]);
   return (
-    <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
+    <div className=" top-0 sticky p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
       <Toaster position="bottom-left" richColors expand={true} />
       <h2 className="font-bold text-lg">Skills</h2>
       <p>Add Your top professional key skills</p>

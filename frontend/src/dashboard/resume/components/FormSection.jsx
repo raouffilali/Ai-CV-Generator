@@ -41,15 +41,24 @@ function FormSection() {
       </div>
       {/* Personal details the   summary */}
       {activeFormIndex == 1 ? (
-        <PersonalDetail enableNext={(v) => setEnableNext(v)} />
+        <PersonalDetail
+          style={"sticky top-0"}
+          enableNext={(v) => setEnableNext(v)}
+        />
       ) : activeFormIndex == 2 ? (
-        <Summery enableNext={(v) => setEnableNext(v)} />
+        <Summery style={"sticky top-0"} enableNext={(v) => setEnableNext(v)} />
       ) : activeFormIndex == 3 ? (
-        <Experience enableNext={(v) => setEnableNext(v)} />
+        <Experience
+          style={"sticky top-0"}
+          enableNext={(v) => setEnableNext(v)}
+        />
       ) : activeFormIndex == 4 ? (
-        <Education enableNext={(v) => setEnableNext(v)} />
+        <Education
+          style={"sticky top-0"}
+          enableNext={(v) => setEnableNext(v)}
+        />
       ) : activeFormIndex == 5 ? (
-        <Skills />
+        <Skills style={"sticky top-0"} />
       ) : null}
 
       {/* Experience */}

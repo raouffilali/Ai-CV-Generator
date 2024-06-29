@@ -22,7 +22,7 @@ import {
 const promt =
   "Job Title: {jobTitle}, Provide a summary for my resume in JSON format. The JSON should be an array of objects, each containing 'experienceLevel' and 'summary' fields. Include summaries for Fresher, Mid-Level, and Experienced levels.";
 
-function Summery({ enableNext }) {
+function Summery({ enableNext, style }) {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [summery, setSummery] = useState();
   const [loading, setLoading] = useState(false);
@@ -134,7 +134,7 @@ function Summery({ enableNext }) {
 
   return (
     <div>
-      <div className=" p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
+      <div className="top-0 sticky p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 ">
         <ToastContainer />
         <h2 className="font-bold text-lg">Summery Details</h2>
         <p>Add Summery for your job title</p>

@@ -8,7 +8,7 @@ import GlobaleApi from "../../../../../service/GlobaleApi";
 import { Bounce, Slide, toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
 import "react-toastify/dist/ReactToastify.css";
 
-function PersonalDetail({ enableNext }) {
+function PersonalDetail({ enableNext ,style }) {
   const params = useParams();
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [formData, setFormData] = useState();
@@ -74,7 +74,9 @@ function PersonalDetail({ enableNext }) {
   };
 
   return (
-    <div className=" p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
+    <div
+      className={` p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 ${style}`}
+    >
       <ToastContainer />
       <h2 className="font-bold text-lg">Personal Details</h2>
       <p>Get started with the basic information</p>
