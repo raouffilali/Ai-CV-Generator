@@ -28,6 +28,7 @@ function PersonalDetail({ enableNext ,style }) {
     setResumeInfo({
       ...resumeInfo,
       [name]: value,
+
     });
 
     console.log(resumeInfo);
@@ -38,6 +39,7 @@ function PersonalDetail({ enableNext ,style }) {
     setLoading(true);
     const data = {
       data: formData,
+
     };
     GlobaleApi.updateResumeDetail(params?.resumeId, data)
       .then((res) => {

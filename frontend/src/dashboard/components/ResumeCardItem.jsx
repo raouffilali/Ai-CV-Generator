@@ -95,7 +95,7 @@ function ResumeCardItem({ resume, refreshData }) {
           {/* <h2 className="text-center my-1">{resume.title}</h2> */}
         </Link>
         <div
-          className="border p-3 flex justify-between  text-white rounded-b-lg shadow-lg"
+          className="border p-3 flex justify-between  text-black rounded-b-lg shadow-lg"
           style={{
             background: resume?.themeColor,
           }}
