@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddResume from "./components/AddResume";
-import GlobaleApi from "../../service/GlobaleApi";
+import GlobaleApi from "../../service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
 import ResumeCardItem from "./components/ResumeCardItem";
 

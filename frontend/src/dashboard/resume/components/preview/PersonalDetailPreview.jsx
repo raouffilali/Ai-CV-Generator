@@ -9,7 +9,7 @@ function PersonalDetailPreview({ resumeInfo }) {
           color: resumeInfo?.themeColor,
         }}
       >
-        {resumeInfo?.firstName} {resumeInfo?.lastName.toUpperCase()}
+        {resumeInfo?.firstName} {resumeInfo?.lastName}
       </h2>
       <h2 className="text-center text-md font-medium">
         {resumeInfo?.jobTitle}

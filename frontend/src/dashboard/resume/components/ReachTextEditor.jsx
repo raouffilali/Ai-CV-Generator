@@ -52,7 +52,16 @@ function ReachTextEditor({ onRichTextEditorChange, index, defaultValue }) {
     const hasTitle = hasResumeInfo && resumeInfo.experience[index].title;
 
     if (!hasTitle) {
-      toast.error("Please enter the position title first");
+      toast.error("Please enter the position title first",{
+        position: "bottom-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      
+      });
       return;
     }
 

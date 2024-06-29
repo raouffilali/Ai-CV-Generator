@@ -134,8 +134,8 @@ function Summery({ enableNext, style }) {
 
   return (
     <div>
+      <ToastContainer />
       <div className="top-0 sticky p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 ">
-        <ToastContainer />
         <h2 className="font-bold text-lg">Summery Details</h2>
         <p>Add Summery for your job title</p>
 

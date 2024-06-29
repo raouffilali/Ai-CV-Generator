@@ -9,7 +9,7 @@ function EducationalPreview({ resumeInfo }) {
           color: resumeInfo?.themeColor,
         }}
       >
-        Education Experience
+        Education
       </h2>
       <hr
         style={{
@@ -33,7 +33,7 @@ function EducationalPreview({ resumeInfo }) {
               {edu?.startDate} - {edu?.endDate}
             </span>
           </h2>
-          <p className="text-sm my-2">{edu?.description}</p>
+          <p className="text-sm my-2 w-full">{edu?.description}</p>
         </div>
       ))}
     </div>
