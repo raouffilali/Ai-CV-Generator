@@ -9,6 +9,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import SignInPage from "./auth/SignIn.jsx";
 import EditResume from "./dashboard/resume/[resumeId]/edit/EditResume.jsx";
 import ViewResume from "./my-resume/[resumeId]/view/ViewResume.jsx";
+import FooterFlow from "./components/custom/Footer.jsx";
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -43,5 +44,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
     <RouterProvider router={router} />
+    <FooterFlow />
   </ClerkProvider>
 );

@@ -135,68 +135,72 @@ function Summery({ enableNext, style }) {
   return (
     <div>
       <ToastContainer />
-      <div className="top-0 sticky p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 ">
-        <h2 className="font-bold text-lg">Summery Details</h2>
-        <p>Add Summery for your job title</p>
+      <div className="flex flex-col gap-3 ">
+        <div className=" p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10 ">
+          <h2 className="font-bold text-lg">Summery Details</h2>
+          <p>Add Summery for your job title</p>
 
-        <form className="mt-7" onSubmit={onSave}>
-          <div className="flex justify-between items-end">
-            <label className="font-bold">Add Summery</label>
-            <Button
-              type="button"
-              className="bg-gradient-to-r from-[#9f5bff] to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white"
-              size="sm"
-              variant="outline"
-              onClick={() => GenerateSummeryFromAi()}
-            >
-              <Brain size={20} className="mr-2" />
-              Generate from AI ✨
-            </Button>
-          </div>
-          <Textarea
-            value={summery}
-            className="mt-5 h-[150px] "
-            required
-            disabled={loading}
-            onChange={(e) => setSummery(e.target.value)}
-            defaultValue={summery ? summery : resumeInfo?.summery}
-            placeholder="Click on the button to generate summery from AI or write your own summery here."
-          />
-          <div className="mt-2 flex justify-end">
-            <Button type="submit" disabled={loading}>
-              {loading ? (
-                <LoaderCircle size={20} className="animate-spin" />
-              ) : (
-                "Save"
-              )}
-            </Button>
-          </div>
-        </form>
-      </div>
-
-      {aiGeneratedSummeryList.length > 0 && (
-        <div className="my-7">
-          <h2 className="font-bold text-lg mb-7">
-            Suggestions for:{" "}
-            <span className="italic text-primary">{resumeInfo?.jobTitle} </span>
-          </h2>
-          {aiGeneratedSummeryList.map((item, index) => (
-            <div key={index} className="relative inline-flex  group">
-              <div className="absolute transitiona-all duration-1000 opacity-10 -inset-px bg-gradient-to-r from-[#9f5bff] to-blue-500 rounded-sm blur-lg group-hover:opacity-25 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-              <div
-                key={index}
-                onClick={() => setSummery(item?.summary)}
-                className="p-5 shadow-lg my-4  cursor-pointer relative  items-center justify-center px- py-2 text-lg font-bold text-black transition-all duration-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-900"
+          <form className="mt-7" onSubmit={onSave}>
+            <div className="flex justify-between items-end">
+              <label className="font-bold">Add Summery</label>
+              <Button
+                type="button"
+                className="bg-gradient-to-r from-[#9f5bff] to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white"
+                size="sm"
+                variant="outline"
+                onClick={() => GenerateSummeryFromAi()}
               >
-                <h2 className="font-bold my-1 text-primary">
-                  Level: {item?.experienceLevel}
-                </h2>
-                <p>{item?.summary}</p>
-              </div>
+                <Brain size={20} className="mr-2" />
+                Generate from AI ✨
+              </Button>
             </div>
-          ))}
+            <Textarea
+              value={summery}
+              className="mt-5 h-[150px] "
+              required
+              disabled={loading}
+              onChange={(e) => setSummery(e.target.value)}
+              defaultValue={summery ? summery : resumeInfo?.summery}
+              placeholder="Click on the button to generate summery from AI or write your own summery here."
+            />
+            <div className="mt-2 flex justify-end">
+              <Button type="submit" disabled={loading}>
+                {loading ? (
+                  <LoaderCircle size={20} className="animate-spin" />
+                ) : (
+                  "Save"
+                )}
+              </Button>
+            </div>
+          </form>
         </div>
-      )}
+
+        {aiGeneratedSummeryList.length > 0 && (
+          <div className="my-7 z-50 order-2">
+            <h2 className="font-bold text-lg mb-7">
+              Suggestions for:{" "}
+              <span className="italic text-primary">
+                {resumeInfo?.jobTitle}{" "}
+              </span>
+            </h2>
+            {aiGeneratedSummeryList.map((item, index) => (
+              <div key={index} className="relative inline-flex  group">
+                <div className="absolute transitiona-all duration-1000 opacity-10 -inset-px bg-gradient-to-r from-[#9f5bff] to-blue-500 rounded-sm blur-lg group-hover:opacity-25 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                <div
+                  key={index}
+                  onClick={() => setSummery(item?.summary)}
+                  className="p-5 shadow-lg my-4  cursor-pointer relative  items-center justify-center px- py-2 text-lg font-bold text-black transition-all duration-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-900"
+                >
+                  <h2 className="font-bold my-1 text-primary">
+                    Level: {item?.experienceLevel}
+                  </h2>
+                  <p>{item?.summary}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

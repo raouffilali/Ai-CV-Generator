@@ -9,10 +9,10 @@ function Header() {
     <div className="p-3 px-5 flex justify-between shadow-md">
       <Link to="/">
         <img
-          src="/logo.svg"
+          src="/logo2.svg"
           alt="Logo of nextgen cv builder"
-          width={150}
-          height={150}
+          width={120}
+          height={100}
         />
       </Link>
       {isSignedIn ? (

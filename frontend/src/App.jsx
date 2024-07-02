@@ -2,6 +2,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/custom/Header";
 import { Loader2 } from "lucide-react";
+import FooterFlow from "./components/custom/Footer";
 
 function App() {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -22,6 +23,7 @@ function App() {
     <>
       <Header />
       <Outlet />
+      
     </>
   );
 }
